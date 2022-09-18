@@ -5,8 +5,8 @@ import NewTollBox from "../Component/NewTollBox";
 import NewEntryBox from "../Component/NewEntryBox";
 
 function TollList() {
-  let localTolls = JSON.parse(localStorage.getItem("tolls"));
-  const [getTolls, setGetTolls] = useState(localTolls);
+  let tolls = JSON.parse(localStorage.getItem("tolls"));
+  const [getTolls, setGetTolls] = useState(tolls);
   const [tName, setTname] = useState("");
   const [newToll, setNewToll] = useState(false);
   const [newEntry, setNewEntry] = useState(false);

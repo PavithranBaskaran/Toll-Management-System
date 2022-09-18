@@ -22,9 +22,8 @@ function Home() {
   if (!tollEntries) localStorage.setItem("tolls", JSON.stringify(defaultTolls));
   if (!tolls) localStorage.setItem("entry", JSON.stringify(defaultEntry));
   useEffect(() => {
-    if (!tollEntries) localStorage.setItem("tolls", "[]");
-    if (!tolls) localStorage.setItem("entry", "[]");
-  }, []);
+    localStorage.setItem("tolls", JSON.stringify(getTolls));
+  }, [getTolls]);
 
   return (
     <>
@@ -141,7 +140,14 @@ function Home() {
           </tbody>
         </table>
       </div>
-      {newToll && <NewTollBox newToll={newToll} setNewToll={setNewToll} getTolls={getTolls} setGetTolls={setGetTolls}/>}
+      {newToll && (
+        <NewTollBox
+          newToll={newToll}
+          setNewToll={setNewToll}
+          getTolls={getTolls}
+          setGetTolls={setGetTolls}
+        />
+      )}
       {newEntry && (
         <NewEntryBox newEntry={newEntry} setNewEntry={setNewEntry} />
       )}
