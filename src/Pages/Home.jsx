@@ -50,16 +50,16 @@ function Home() {
               {isActive &&
                 [
                   ...new Map(
-                    tollEntries.map((entry) => [entry.tollname, entry])
+                    tolls.map((entry) => [entry.tollName, entry])
                   ).values(),
                 ].map((entry, key) => {
                   return (
                     <div
                       className="dropdown-item"
                       key={key}
-                      onClick={() => setTollName(entry.tollname)}
+                      onClick={() => setTollName(entry.tollName)}
                     >
-                      {entry.tollname}
+                      {entry.tollName}
                     </div>
                   );
                 })}

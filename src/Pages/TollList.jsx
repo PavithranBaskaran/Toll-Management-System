@@ -93,6 +93,7 @@ function TollList() {
                         <MdDelete
                           size={"25px"}
                           onClick={() => handleDelete(entry.id)}
+                          className="delete"
                         />
                       </td>
                     </tr>

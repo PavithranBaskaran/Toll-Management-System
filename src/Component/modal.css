@@ -64,3 +64,6 @@
 input{
     padding: 10px;
 }
+.delete{
+  cursor: pointer;
+}
