@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        SCANNER_HOME = tool 'SonarScanner 4.0';
+    }
 
     stages {
   //       stage('SCM') {
@@ -8,9 +11,8 @@ pipeline {
   stage('SonarQube analysis') {
       steps {
       echo 'Scanning........'
-    def scannerHome = tool 'SonarScanner 4.0';
     withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
-      sh "${scannerHome}/bin/sonar-scanner"
+      sh "${SCANNER_HOME}/bin/sonar-scanner"
     }
       echo 'Scanning Done...........'
       }
