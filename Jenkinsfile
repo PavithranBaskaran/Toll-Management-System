@@ -35,7 +35,7 @@ pipeline {
   //           }
   //       }
     // }
-
+stages {
  stage("build & SonarQube analysis") {
           node {
               withSonarQubeEnv('My SonarQube Server') {
@@ -52,6 +52,7 @@ pipeline {
               }
           }
       }
+}
 }
 
 
