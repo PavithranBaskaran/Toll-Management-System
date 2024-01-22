@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-  //   stages {
+    stages {
   //       stage('SCM') {
   //   git 'https://github.com/foo/bar.git'
   // }
