@@ -1,10 +1,10 @@
 pipeline {
     agent any
 
-    stages {
-        stage('SCM') {
-    git 'https://github.com/foo/bar.git'
-  }
+  //   stages {
+  //       stage('SCM') {
+  //   git 'https://github.com/foo/bar.git'
+  // }
   stage('SonarQube analysis') {
       echo 'Scanning........'
     def scannerHome = tool 'SonarScanner 4.0';
