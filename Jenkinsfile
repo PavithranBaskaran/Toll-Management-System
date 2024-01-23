@@ -48,9 +48,9 @@ stages {
                          def jsonSlurper = new JsonSlurperClassic()
                          def jsonResponse = jsonSlurper.parseText(apiURL)
 
-                         def coveragePercentage = jsonResponse.component.measures[0].value    
+                         def coveragePercentage = jsonResponse.component.measures[0].value   
+                         echo "Coverage Percentage: ${coveragePercentage}"
                     }
-                    echo "Coverage Percentage: ${coveragePercentage}"
                }
     }
 }
