@@ -39,7 +39,7 @@ pipeline {
 stages {
  stage("build & SonarQube analysis") {
      steps {
-          node('Permanent Agent') {
+          node('Java Agent') {
               withSonarQubeEnv('My SonarQube Server') {
                  sh 'mvn clean package sonar:sonar'
               }
