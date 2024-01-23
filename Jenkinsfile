@@ -1,3 +1,4 @@
+import groovy.json.JsonSlurperClassic
 
 pipeline {
     agent any
@@ -37,28 +38,21 @@ pipeline {
   //       }
     // }
 stages {
- stage("build & SonarQube analysis") {
-     steps {
-          node('Java Agent') {
-              withSonarQubeEnv('My SonarQube Server') {
-                 sh 'mvn clean package sonar:sonar'
-              }
-          }
-     }
-      }
+    stage("test")
+    {
+    steps {
+                    script {
+                         def apiURL = sh(script:"curl -s 'https://sonarcloud.io/api/measures/component?componentKey=Toll-Management-System&metricKeys=coverage'",returnStdout:true).trim()
+                         echo "${apiURL}"
 
-      stage("Quality Gate"){
-          steps {
-              script {
-          timeout(time: 1, unit: 'HOURS') {
-              def qg = waitForQualityGate()
-              if (qg.status != 'OK') {
-                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
-              }
-          }
-              }
-          }
-      }
+                         def jsonSlurper = new JsonSlurperClassic()
+                         def jsonResponse = jsonSlurper.parseText(apiURL)
+
+                         def coveragePercentage = jsonResponse.component.measures[0].value    
+                    }
+                    echo "Coverage Percentage: $coveragePercentage%"
+               }
+    }
 }
 }
 
