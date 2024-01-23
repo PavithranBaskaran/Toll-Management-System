@@ -50,7 +50,7 @@ stages {
 
                          def coveragePercentage = jsonResponse.component.measures[0].value    
                     }
-                    echo "Coverage Percentage: $coveragePercentage%"
+                    echo "Coverage Percentage: ${coveragePercentage}"
                }
     }
 }
