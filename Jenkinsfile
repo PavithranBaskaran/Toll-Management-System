@@ -42,7 +42,7 @@ stages {
     {
     steps {
                     script {
-                         def apiURL = sh(script:"curl -s 'https://sonarcloud.io/api/measures/component?componentKey=Toll-Management-System&metricKeys=coverage'",returnStdout:true).trim()
+                         def apiURL = sh(script:"curl -s 'https://sonarcloud.io/api/measures/component?componentKey=PavithranBaskaran_Toll-Management-System&metricKeys=coverage'",returnStdout:true).trim()
                          echo "${apiURL}"
 
                          def jsonSlurper = new JsonSlurperClassic()
